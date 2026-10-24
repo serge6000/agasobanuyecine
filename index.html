@@ -526,42 +526,46 @@
       });
     });
 
-    const demoVideos = {
-      sintel: {
-        title: "Sintel — Open Movie Demo",
-        url: "https://www.youtube-nocookie.com/embed/1Dm3aWgX7aI"
-      },
-      tears: {
-        title: "Tears of Steel — Open Movie Demo",
-        url: "https://www.youtube-nocookie.com/embed/R6MlUcmOul8"
-      },
-      bigbuck: {
-        title: "Big Buck Bunny — Open Movie Demo",
-        url: "https://www.youtube-nocookie.com/embed/aqz-KE-bpKQ"
-      }
-    };
+   const demoVideos = {
+  sintel: {
+    title: "Sintel — Open Movie Demo",
+    url: "https://www.youtube-nocookie.com/embed/1Dm3aWgX7aI"
+  },
+  tears: {
+    title: "Tears of Steel — Open Movie Demo",
+    url: "https://www.youtube-nocookie.com/embed/R6MlUcmOul8"
+  },
+  bigbuck: {
+    title: "Big Buck Bunny — Open Movie Demo",
+    url: "https://www.youtube-nocookie.com/embed/aqz-KE-bpKQ"
+  }
+};
 
-    const player = document.getElementById("player");
-    const frame = document.getElementById("videoFrame");
-    const playerTitle = document.getElementById("playerTitle");
+const player = document.getElementById("player");
+const frame = document.getElementById("videoFrame");
+const playerTitle = document.getElementById("playerTitle");
 
-    document.querySelectorAll("[data-demo]").forEach(button => {
-      button.addEventListener("click", () => {
-        const demo = demoVideos[button.dataset.demo];
-        if (!demo) return;
-        playerTitle.textContent = demo.title;
-        frame.src = demo.url;
-        player.style.display = "block";
-        player.scrollIntoView({ behavior: "smooth", block: "start" });
-      });
+document.querySelectorAll("[data-demo]").forEach(button => {
+  button.addEventListener("click", () => {
+    const demo = demoVideos[button.dataset.demo];
+    if (!demo) return;
+
+    playerTitle.textContent = demo.title;
+    frame.src = demo.url;
+    player.style.display = "block";
+    player.scrollIntoView({
+      behavior: "smooth",
+      block: "start"
     });
+  });
+});
 
-    document.getElementById("closePlayer").addEventListener("click", () => {
-      frame.src = "";
-      player.style.display = "none";
-    });
+document.getElementById("closePlayer").addEventListener("click", () => {
+  frame.src = "";
+  player.style.display = "none";
+});
 
-    document.getElementById("year").textContent = new Date().getFullYear();
-  </script>
+document.getElementById("year").textContent = new Date().getFullYear();
+</script>
 </body>
 </html>
