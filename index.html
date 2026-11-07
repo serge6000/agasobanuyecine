@@ -574,11 +574,14 @@ document.querySelectorAll("[data-demo]").forEach(button => {
 });
 
 document.getElementById("closePlayer").addEventListener("click", () => {
-  frame.src = "";
-  player.style.display = "none";
+ document.querySelectorAll("[data-drive]").forEach(button => {
+  button.addEventListener("click", () => {
+    playerTitle.textContent = "TROY B";
+    frame.src = button.dataset.drive;
+    player.style.display = "block";
+    player.scrollIntoView({
+      behavior: "smooth",
+      block: "start"
+    });
+  });
 });
-
-document.getElementById("year").textContent = new Date().getFullYear();
-</script>
-</body>
-</html>
